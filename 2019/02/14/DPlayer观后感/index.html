@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="k-on">
 <meta property="og:description" content="最近研读了 B 站大佬 diygod 为宫园薰创造的 DPlayer，最开始是从第一次提交开始一次提交一次提交地读的，后来，在获得了一定的信息后开始读最新版本。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-14T05:50:02.202Z">
+<meta property="og:updated_time" content="2019-03-16T11:52:59.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dplayer 观后感">
 <meta name="twitter:description" content="最近研读了 B 站大佬 diygod 为宫园薰创造的 DPlayer，最开始是从第一次提交开始一次提交一次提交地读的，后来，在获得了一定的信息后开始读最新版本。">
@@ -423,35 +423,22 @@
         <p>最近研读了 B 站大佬 diygod 为宫园薰创造的 <code>DPlayer</code>，最开始是从第一次提交开始一次提交一次提交地读的，后来，在获得了一定的信息后开始读最新版本。</p>
 <a id="more"></a>
 <p>首先，如果要写一个播放器，我们需要考虑以下步骤</p>
-<blockquote>
-<p>UI 界面 交互</p>
-</blockquote>
-<p>关于 UI 美+爽 胜过千言万语。一个受欢迎的播放器，必须要长得漂亮，用的舒服。这也是为什么 B 站动漫这么少我还是喜欢在上面看动漫的原因之一。</p>
+<h2 id="UI-界面-交互"><a href="#UI-界面-交互" class="headerlink" title="UI 界面 交互"></a>UI 界面 交互</h2><p>关于 UI 美+爽 胜过千言万语。一个受欢迎的播放器，必须要长得漂亮，用的舒服。这也是为什么 B 站动漫这么少我还是喜欢在上面看动漫的原因之一。</p>
 <p><code>video</code> 标签自带的样式，可能不太理想。没有弹幕、截图、播放速度、自定义热键、特定用户习惯设定等功能，并且操作体验稍微有些抠脚。</p>
 <p>而自己写样式和交互，便可以拥有想要的动画、更便捷流畅的交互体验、和脑海中的颜值。可塑性很高。尤其是自定义的 <code>contextmenu</code>，我个人尤其喜欢。</p>
 <p><code>DPlayer</code> 中具体的做法就是在 <code>video</code> 标签的同级，添加了三个容器 <code>div</code>。一个是放弹幕的，一个是放字幕的，一个是放一些操作时会出现的提示类元素。</p>
 <p>自定义操作栏等则放在了 <code>video</code> 容器同级。许多 api 的设计，不仅仅是满足内部控件的需求，也向外提供了脚本化操作 <code>video</code> 更友好的编程体验。</p>
 <p>吐槽一点，我觉得新版的弹幕输入体验并没有很早之前的版本体验好。</p>
-<blockquote>
-<p>i18n</p>
-</blockquote>
-<p>维护了个哈希表，映射。。。不知道是不是大家都这样做。没做过 i18n 的需求。</p>
-<blockquote>
-<p>tooltip</p>
-</blockquote>
-<p>这是个美丽的意外，发现了 <code>balloon.css</code> 这个不错的工具。</p>
-<blockquote>
-<p>template</p>
-</blockquote>
-<p>使用的是 <code>art-template</code> , 在前端进行数据渲染，其实无论是前端渲染或是后端渲染，模板都是一个可执行函数，执行时传入对应的参数对象，<code>return</code> 出 <code>html</code> 字符串。 这点让我想到了现在的 <code>react、vue</code> 之流，<code>render</code> 函数返回一个 <code>VNode</code>， 然后 <code>patch</code>，确实是思想的不同高度</p>
-<blockquote>
-<p>弹幕</p>
-</blockquote>
-<p>弹幕都是放在一个容器中，分 3 种类型展示：滚动弹幕、顶部弹幕、底部弹幕。ps: bili 的播放器中高级弹幕也是单独的一个容器。</p>
+<h2 id="i18n"><a href="#i18n" class="headerlink" title="i18n"></a>i18n</h2><p>维护了个哈希表，映射。。。不知道是不是大家都这样做。没做过 i18n 的需求。</p>
+<h2 id="tooltip"><a href="#tooltip" class="headerlink" title="tooltip"></a>tooltip</h2><p>这是个美丽的意外，发现了 <code>balloon.css</code> 这个不错的工具。</p>
+<h2 id="template"><a href="#template" class="headerlink" title="template"></a>template</h2><p>使用的是 <code>art-template</code> , 在前端进行数据渲染，其实无论是前端渲染或是后端渲染，模板都是一个可执行函数，执行时传入对应的参数对象，<code>return</code> 出 <code>html</code> 字符串。 这点让我想到了现在的 <code>react、vue</code> 之流，<code>render</code> 函数返回一个 <code>VNode</code>， 然后 <code>patch</code>，确实是思想的不同高度</p>
+<h2 id="弹幕"><a href="#弹幕" class="headerlink" title="弹幕"></a>弹幕</h2><p>弹幕都是放在一个容器中，分 3 种类型展示：滚动弹幕、顶部弹幕、底部弹幕。ps: bili 的播放器中高级弹幕也是单独的一个容器。</p>
 <p>danmaku.js 中的 <code>draw</code> 方法是绘制弹幕的方法，弹幕各弹道互不干扰，滚动速度由弹幕长度决定。</p>
 <p>弹幕密度默认：滚动类型的互不冲突，通过弹幕右边是否离开 <code>video</code> 视口来选择插入到横向的哪一个弹道。也可以设置 unlimited，top 和 bottom 的弹幕就是单纯的 <code>%</code> 来决定位置。</p>
 <p>添加弹幕时使用了 <code>createDocumentFragment</code> 来减少页面重排。使用 <code>animationend</code> 事件，在弹幕滚动出视口后销毁 dom。</p>
-<p>关于代码拆分，是按组件化的思想进行了文件分离，通过 new ClassName 的方式来创建对应的组件，拆分的非常细腻，合理。</p>
+<h2 id="清晰度切换"><a href="#清晰度切换" class="headerlink" title="清晰度切换"></a>清晰度切换</h2><p>很暴力，记住之前当前播放的时间，然后改变视频地址，重新生成video标签</p>
+<h2 id="流文件的处理"><a href="#流文件的处理" class="headerlink" title="流文件的处理"></a>流文件的处理</h2><p>直接利用的各个第三方依赖进行处理，比如 flvjs dashjs hlsjs webtorrent。需开发者手动引入。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>关于代码拆分，是按组件化的思想进行了文件分离，通过 new ClassName 的方式来创建对应的组件，拆分的非常细腻，合理。</p>
 <p>除此之外，很多工作是为了暴露出合理的 api 供开发者使用，也许这才是 最重要的地方吧。其次就是兼容性的处理。</p>
 <p>本次探险到此结束。第一次尝试进行所谓的总结，结果嘛，233。</p>
 <blockquote>
@@ -523,6 +510,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/16/状态管理分享/" rel="prev" title="状态管理 - 例会分享">
+                状态管理 - 例会分享 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -600,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -632,7 +632,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -663,6 +663,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UI-界面-交互"><span class="nav-number">1.</span> <span class="nav-text">UI 界面 交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i18n"><span class="nav-number">2.</span> <span class="nav-text">i18n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tooltip"><span class="nav-number">3.</span> <span class="nav-text">tooltip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">4.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹幕"><span class="nav-number">5.</span> <span class="nav-text">弹幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清晰度切换"><span class="nav-number">6.</span> <span class="nav-text">清晰度切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流文件的处理"><span class="nav-number">7.</span> <span class="nav-text">流文件的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">8.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
