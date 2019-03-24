@@ -113,18 +113,18 @@
 
 
 
-<meta name="description" content="迫于需要在周例会上分享 redux ， 整理一下相关内容。">
+<meta name="description" content="迫于需要在周例会上分享 redux , 整理一下相关内容。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="状态管理 - 例会分享">
-<meta property="og:url" content="http://yoursite.com/2019/03/16/状态管理分享/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/24/状态管理分享/index.html">
 <meta property="og:site_name" content="k-on">
-<meta property="og:description" content="迫于需要在周例会上分享 redux ， 整理一下相关内容。">
+<meta property="og:description" content="迫于需要在周例会上分享 redux , 整理一下相关内容。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/redux图解.png">
-<meta property="og:updated_time" content="2019-03-16T11:32:32.874Z">
+<meta property="og:updated_time" content="2019-03-24T14:36:04.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="状态管理 - 例会分享">
-<meta name="twitter:description" content="迫于需要在周例会上分享 redux ， 整理一下相关内容。">
+<meta name="twitter:description" content="迫于需要在周例会上分享 redux , 整理一下相关内容。">
 <meta name="twitter:image" content="http://yoursite.com/images/redux图解.png">
 
 
@@ -248,7 +248,7 @@
             <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
           </form>
       </li>
-      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+      <li class="menu-item online"><span id="online-count">鬼知道多少</span>人在线</li>
     </ul>
   
 
@@ -318,7 +318,7 @@
   
   <div class="post-date">
 			<div class="post-month">03月</div>
-			<div class="post-day">16</div>
+			<div class="post-day">24</div>
 	</div>
   
   <div class="post-badge">
@@ -333,7 +333,7 @@
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/状态管理分享/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/状态管理分享/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yui">
@@ -362,8 +362,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-16T19:33:01+08:00">
-                2019-03-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-24T22:33:01+08:00">
+                2019-03-24
               </time>
             
 
@@ -422,18 +422,18 @@
       
 
       
-        <p>迫于需要在周例会上分享 redux ， 整理一下相关内容。</p>
+        <p>迫于需要在周例会上分享 <code>redux</code> , 整理一下相关内容。</p>
 <a id="more"></a>
-<h2 id="为什么需要状态管理"><a href="#为什么需要状态管理" class="headerlink" title="为什么需要状态管理"></a>为什么需要状态管理</h2><p>日常开发 webapp 中，需要模拟 头部的导航，当页面间跳转较多，需要传递参数时，往往需要携带大量的参数往来于路由跳转之间，这样会导致，history 的紊乱.</p>
-<p>如果想实现页面间的跳转，只能按指定的页面顺序前进或后退，那如果使用路由传参，会有诸多不便，要么是 history stack 的混乱，要么是goBack()方法的无法正确回退到理想页面。这时，如果接入 redux,就可以让路由中的返回上一页，按照理想中的那样，goBack()。goBack()。goBack()一路到底。唯一需要做的，就是在 需要的时候，对redux做一些处理。比如，特定事件中重置相应的 状态</p>
-<p>在 tripH5 的coupon页面有注释，用于例会中举例。</p>
-<p>私以为，没有状态实时更新需求，可于sessionStorage中做状态管理，需要实时与 UI 同步，则先于 状态管理库 对接，再存入sessionStorage。</p>
+<h2 id="为什么需要状态管理"><a href="#为什么需要状态管理" class="headerlink" title="为什么需要状态管理"></a>为什么需要状态管理</h2><p>日常开发 <code>webapp</code> 中，需要模拟 头部的导航，当页面间跳转，需要传递参数时，往往需要携带大量的参数往来于路由跳转之间，这样会导致，<code>history</code> 的紊乱.</p>
+<p>我们想实现页面只能按指定的顺序前进或后退，使用 <code>push 前进</code>, <code>goBack 后退</code>, 那对于页面间的参数逻辑传递，就需要一个额外的状态管理。</p>
+<p>可以用 本地存储 的方式进行状态管理，通常情况下，这完全可以满足需求。</p>
+<p>但遇到这种情况：页面中有多个组件，并且共享同一个经常会变更的状态，如果还是使用 本地存储， 就需要多做一些组件间通信，比如 <strong>状态提升</strong> <strong>状态改变向上派发事件</strong> 等等一系列跨组件操作。这时候，我们可以引入 <code>redux</code>，</p>
+<p>在 tripH5 的 coupon 页面有注释，用于例会中举例。关于 goback 的爽</p>
 <h2 id="关于-redux"><a href="#关于-redux" class="headerlink" title="关于 redux"></a>关于 redux</h2><blockquote>
 <p>Redux is a predictable state container for JavaScript apps.</p>
 </blockquote>
 <p>可预测状态的容器 只有 2kb.</p>
 <p><code>redux</code> 借鉴了函数式编程的思想，采用了 <strong>单向数据流</strong> 理念，为实现对数据状态的管理封装提供了不同的方法，并规定了我们进行管理的模式。以此来达到数据 <strong>可预测，可追溯</strong>。</p>
-<p>ps: 死板，模式代码太多，影响代码编写体验。</p>
 <h2 id="redux-关键字"><a href="#redux-关键字" class="headerlink" title="redux 关键字"></a>redux 关键字</h2><blockquote>
 <p>redux store getState subscribe dispatch reducer</p>
 </blockquote>
@@ -447,13 +447,26 @@
 <li>使用 <code>reducer</code> 函数来接收 <code>action</code></li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">"redux"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This is a reducer, a pure function with (state, action) =&gt; state signature.</span></span><br><span class="line"><span class="comment"> * It describes how an action transforms the state into the next state.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * The shape of the state is up to you: it can be a primitive, an array, an object,</span></span><br><span class="line"><span class="comment"> * or even an Immutable.js data structure. The only important part is that you should</span></span><br><span class="line"><span class="comment"> * not mutate the state object, but return a new object if the state changes.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * In this example, we use a `switch` statement and strings, but you can use a helper that</span></span><br><span class="line"><span class="comment"> * follows a different convention (such as function maps) if it makes sense for your</span></span><br><span class="line"><span class="comment"> * project.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = <span class="number">0</span>, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"INCREMENT"</span>:</span><br><span class="line">      <span class="keyword">return</span> state + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"DECREMENT"</span>:</span><br><span class="line">      <span class="keyword">return</span> state - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a Redux store holding the state of your app.</span></span><br><span class="line"><span class="comment">// Its API is &#123; subscribe, dispatch, getState &#125;.</span></span><br><span class="line"><span class="keyword">let</span> store = createStore(counter);</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can use subscribe() to update the UI in response to state changes.</span></span><br><span class="line"><span class="comment">// Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.</span></span><br><span class="line"><span class="comment">// However it can also be handy to persist the current state in the localStorage.</span></span><br><span class="line">store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(store.getState()));</span><br><span class="line"></span><br><span class="line"><span class="comment">// The only way to mutate the internal state is to dispatch an action.</span></span><br><span class="line"><span class="comment">// The actions can be serialized, logged or stored and later replayed.</span></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">"INCREMENT"</span> &#125;);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">"INCREMENT"</span> &#125;);</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">"DECREMENT"</span> &#125;);</span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="redux-不是必须的"><a href="#redux-不是必须的" class="headerlink" title="redux 不是必须的"></a>redux 不是必须的</h2><blockquote>
+<p>人们痛苦地抱怨 <code>Redux</code>, <code>React</code>, <code>FP</code>, 不可变数据和一些别的东西，但我理解他们。那些不需要一系列代码来更新应用状态的方法自然比使用 <code>Redux</code> 更为简单。这说的没错，设计上也是如此。</p>
+</blockquote>
+<p>Redux 提供了一种权衡。它要求你：</p>
+<ul>
+<li>1.用简单的对象和数组来描述应用状态.</li>
+<li>2.用简单对象来描述应用中的变更.</li>
+<li>3.用纯函数来描述处理变更的逻辑.</li>
+<li>4.可对状态改变检测,有历史记录.</li>
+<li>5.状态的改变,入口只有 reducer 这一个地方,定位错误十分迅速.</li>
+</ul>
+<p>无论是不是 <code>React</code> 应用，这些限制都不是创建一个应用所必须的。事实上，这些都是非常强的约束，在把它们加入应用之前，你应当慎重考虑。</p>
+<p>ps: 死板，模式代码太多，影响代码编写体验。</p>
 <h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p><code>redux</code> 提供了一套中间件机制，使开发者可以在派发任何一个 <code>action</code> 和执行 <code>reducer</code> 这两步之间，添加自定义扩展功能</p>
 <h2 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h2><p>对 redux 进行了封装，使其可以在 react 中自行感知变化</p>
 <p>明确 <code>2</code> 个重要概念： <strong>容器组件</strong> 和 <strong>展示组件</strong>。</p>
 <p>容器组件是指数据状态和逻辑的容器。 展示组件只负责根据接收的数据展示页面。</p>
 <p><code>connect</code> 的核心是将开发者定义的组件，封装转换成容器组件。</p>
 <p><img src="/images/redux图解.png" alt=""></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Provider</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">"./store"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">"./App"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">  rootElement</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ connect</span></span><br><span class="line"><span class="regexp">import &#123; connect &#125; from "react-redux";</span></span><br><span class="line"><span class="regexp">import &#123; increment, decrement, reset &#125; from "./</span>actionCreators<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// const Counter = ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const mapStateToProps = (state /*, ownProps*/) =&gt; &#123;</span></span><br><span class="line"><span class="string">  return &#123;</span></span><br><span class="line"><span class="string">    counter: state.counter</span></span><br><span class="line"><span class="string">  &#125;;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const mapDispatchToProps = &#123; increment, decrement, reset &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default connect(</span></span><br><span class="line"><span class="string">  mapStateToProps,</span></span><br><span class="line"><span class="string">  mapDispatchToProps</span></span><br><span class="line"><span class="string">)(Counter);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Provider</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">"./store"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">"./App"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">  rootElement</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ connect</span></span><br><span class="line"><span class="regexp">import &#123; connect &#125; from "react-redux";</span></span><br><span class="line"><span class="regexp">import &#123; increment, decrement, reset &#125; from "./</span>actionCreators<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// const Counter = ...;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const mapStateToProps = (state /*, ownProps*/) =&gt; &#123;</span></span><br><span class="line"><span class="string">  return &#123;</span></span><br><span class="line"><span class="string">    counter: state.counter</span></span><br><span class="line"><span class="string">  &#125;;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const mapDispatchToProps = &#123; increment, decrement, reset &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default connect(</span></span><br><span class="line"><span class="string">  mapStateToProps,</span></span><br><span class="line"><span class="string">  mapDispatchToProps</span></span><br><span class="line"><span class="string">)(Counter);</span></span><br></pre></td></tr></table></figure>
 <h2 id="ssr-服务端渲染-同构"><a href="#ssr-服务端渲染-同构" class="headerlink" title="ssr 服务端渲染 同构"></a>ssr 服务端渲染 同构</h2><p>之前看 bili 首页，刷新页面发现有一部分仿佛没有销毁一样，直接就出现在了页面上，当时很惊讶，现在发现，应该是因为，首页是服务端渲染，采用的是流的方式。渐进式渲染，减少了 TTFB 时间</p>
 <p>16 版本提供了 <code>renderToNodeStream</code> 和 <code>renderToStaticNodeStream</code> 方法。</p>
 <p><code>renderToNodeStream</code> 方法持续产生字节流，返回 Readable stream. 最终通过流的形式返回 html 字符串。</p>
@@ -700,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要状态管理"><span class="nav-number">1.</span> <span class="nav-text">为什么需要状态管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-redux"><span class="nav-number">2.</span> <span class="nav-text">关于 redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-关键字"><span class="nav-number">3.</span> <span class="nav-text">redux 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-设计哲学"><span class="nav-number">4.</span> <span class="nav-text">redux 设计哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number">5.</span> <span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-redux"><span class="nav-number">6.</span> <span class="nav-text">react-redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssr-服务端渲染-同构"><span class="nav-number">7.</span> <span class="nav-text">ssr 服务端渲染 同构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next-js-ssr-框架"><span class="nav-number">8.</span> <span class="nav-text">next.js ssr 框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更好的选择"><span class="nav-number">9.</span> <span class="nav-text">更好的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-demo"><span class="nav-number">10.</span> <span class="nav-text">redux demo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要状态管理"><span class="nav-number">1.</span> <span class="nav-text">为什么需要状态管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-redux"><span class="nav-number">2.</span> <span class="nav-text">关于 redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-关键字"><span class="nav-number">3.</span> <span class="nav-text">redux 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-设计哲学"><span class="nav-number">4.</span> <span class="nav-text">redux 设计哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-不是必须的"><span class="nav-number">5.</span> <span class="nav-text">redux 不是必须的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number">6.</span> <span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-redux"><span class="nav-number">7.</span> <span class="nav-text">react-redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssr-服务端渲染-同构"><span class="nav-number">8.</span> <span class="nav-text">ssr 服务端渲染 同构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next-js-ssr-框架"><span class="nav-number">9.</span> <span class="nav-text">next.js ssr 框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更好的选择"><span class="nav-number">10.</span> <span class="nav-text">更好的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-demo"><span class="nav-number">11.</span> <span class="nav-text">redux demo</span></a></li></ol></div>
             
 
           </div>
