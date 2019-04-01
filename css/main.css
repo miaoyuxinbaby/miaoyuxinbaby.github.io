@@ -1402,11 +1402,14 @@ pre .javascript .function {
   left: 20px;
   top: 5px;
 }
+.posts-collapse .post-meta .post-time {
+  color: #6cf;
+}
 .posts-collapse .post-comments-count {
   display: none;
 }
 .posts-collapse .post-title {
-  margin-left: 60px;
+  margin-left: 65px;
   font-size: 16px;
   font-weight: normal;
   line-height: inherit;
@@ -1915,7 +1918,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b178aa;
+  background: #3b8106;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3051,7 +3054,7 @@ a {
   color: #795548;
 }
 .btn {
-  background: #97dffd;
+  background: #00a1d6;
   color: #fff;
   font-size: 13px;
   padding: 1px 15px;
@@ -3059,7 +3062,7 @@ a {
   border: none;
 }
 .btn:hover {
-  background: #47456d;
+  background: #fe8fa7;
 }
 .posts-expand .post-body .fancybox img {
   border: none;
@@ -3503,10 +3506,10 @@ a {
 .site-master .site-master-description {
   font-size: 18px;
   font-weight: 700;
-  margin: 20px 0 0;
+  margin: 25px 0 0;
 }
 .site-master .site-master-description span {
-  color: #ff3f1a;
+  color: #6d757a;
 }
 .use-motion .sidebar .motion-element {
   opacity: 1;
@@ -3634,7 +3637,7 @@ a {
   overflow: visible;
 }
 .links-of-author-item a:hover .fa {
-  background: #97dffd;
+  background: #00a1d6;
   color: #fff;
 }
 .links-of-author-item .fa {
@@ -3738,7 +3741,7 @@ a {
   }
 }
 .post-date {
-  background-color: #97dffd;
+  background-color: #00a1d6;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
   position: absolute;
   top: -20px;
@@ -3764,9 +3767,9 @@ a {
   position: absolute;
   left: -16px;
   top: 105px;
-  border-color: #47456d;
+  border-color: #fe8fa7;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
-  background-color: #97dffd;
+  background-color: #00a1d6;
   margin: 5px 0 15px 2px;
   font-size: 14px;
   border-radius: 0 4px 4px 0;
@@ -3805,18 +3808,18 @@ a {
 }
 .pagination .page-number {
   background: #fff;
-  color: #97dffd;
+  color: #00a1d6;
   border-radius: 5px;
-  border: 1px solid #97dffd;
+  border: 1px solid #00a1d6;
 }
 .pagination .page-number:hover {
-  background: #97dffd;
+  background: #00a1d6;
   color: #fff;
-  border-top-color: #97dffd;
+  border-top-color: #00a1d6;
 }
 .pagination .page-number.current {
-  background: #97dffd;
-  border: 1px solid #97dffd;
+  background: #00a1d6;
+  border: 1px solid #00a1d6;
 }
 .pagination .extend {
   border-top: none;
