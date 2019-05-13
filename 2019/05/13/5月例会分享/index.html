@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yui,blog">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本次例会打算分享一些开发的小技巧和知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5月例会分享">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/5月例会分享/index.html">
+<meta property="og:site_name" content="k-on">
+<meta property="og:description" content="本次例会打算分享一些开发的小技巧和知识">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/脱离鼠标.png">
+<meta property="og:image" content="http://yoursite.com/images/说到重构-1.png">
+<meta property="og:image" content="http://yoursite.com/images/说到重构-2.png">
+<meta property="og:image" content="http://yoursite.com/images/说到重构-2.png">
+<meta property="og:updated_time" content="2019-05-13T14:37:43.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5月例会分享">
+<meta name="twitter:description" content="本次例会打算分享一些开发的小技巧和知识">
+<meta name="twitter:image" content="http://yoursite.com/images/脱离鼠标.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/1/2019 23:00:00',
+    onlineAPI: '',
+    site: {
+      title: 'k-on',
+      subtitle: '大好き',
+      author: 'yui'
+    },
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/favicon.ico',
+      hidden: '/images/failure.ico',
+      show_text: 'hirasawa Yui',
+      hide_text: 'akiyama Mio'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+  <title>5月例会分享 | k-on</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">鬼知道多少</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/header-kon.webp)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            <span>k</span><span>-</span><span>o</span><span>n</span>
+          </div>
+          <div id="guide" class="guide">
+            <span>k</span><span>-</span><span>o</span><span>n</span>
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle">大好き</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/yui5.jpg" alt="yui">
+    <h2 class="site-master-description" itemprop="description">
+        <span>梦里不知身是客，荒唐二十有一载</span>
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">05月</div>
+			<div class="post-day">13</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+        <a href="/categories/孤独的观测者/" itemprop="url" rel="index">
+          <span itemprop="name">孤独的观测者</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/5月例会分享/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yui5.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k-on">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">5月例会分享</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T20:19:33+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/孤独的观测者/" itemprop="url" rel="index">
+                    <span itemprop="name">孤独的观测者</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本次例会打算分享一些开发的小技巧和知识</p>
+<a id="more"></a>
+<h2 id="谷歌开发者工具一些方便调试的小技巧"><a href="#谷歌开发者工具一些方便调试的小技巧" class="headerlink" title="谷歌开发者工具一些方便调试的小技巧"></a>谷歌开发者工具一些方便调试的小技巧</h2><p>elements 里面选中某个元素，按 h 可以快速显示隐藏该元素，<code>visibility: hidden !important</code></p>
+<p>sources 里面，按 <code>ctrl + o</code> 可以打开某个 js 脚本，并且可以直接修改它，修改的内容在不刷新的情况下是生效的。</p>
+<p>在 sources 里打开压缩过后的代码时，可以点击左下角的 <code>{}</code> 标志，会格式化已有代码</p>
+<h2 id="一个-css-小知识点"><a href="#一个-css-小知识点" class="headerlink" title="一个 css 小知识点"></a>一个 css 小知识点</h2><p>写 类似于 弹窗遮罩层的时候，可用 css 或 js</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.opoup-wp</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.5);</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关于写不写分号"><a href="#关于写不写分号" class="headerlink" title="关于写不写分号"></a>关于写不写分号</h2><p>没有应该不应该，只有你自己喜欢不喜欢。<code>JavaScript</code> 语法长得 <code>C-like</code> 不代表它本质上和 <code>C</code> 是一类语言，所有直觉性的 “当然应该加分号” 都是保守的、未经深入思考的草率结论。后来新设计的语言里可选分号的多得去了，光是 <strong>“可以加分号但是大家都不加”</strong> 的语言就有：Go, Python, Ruby, Swift,Scala…</p>
+<p>至于说 “很难总结什么时候加不加”，其实真的很简单。真正会导致上下行解析出问题的 <code>token</code> 有 5 个：<strong>括号，方括号，正则开头的斜杠，加号，减号</strong></p>
+<h2 id="抛弃鼠标"><a href="#抛弃鼠标" class="headerlink" title="抛弃鼠标"></a>抛弃鼠标</h2><p>尽可能地去背一些快捷键，这样会减少你离开键盘去摸鼠标的次数，提高效率</p>
+<p>百度脑图 写代码之前画一画脑图，清晰的逻辑会让编码事半功倍</p>
+<p><img src="/images/脱离鼠标.png" alt=""></p>
+<h2 id="合理冗余其实也是一种重构"><a href="#合理冗余其实也是一种重构" class="headerlink" title="合理冗余其实也是一种重构"></a>合理冗余其实也是一种重构</h2><p>说到重构，可读性重构是很有必要的，代码是写给人看的。</p>
+<p>有这样一个需求，一开始很简单，需要设计两个运营展位：</p>
+<p><img src="/images/说到重构-1.png" alt=""></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象一个组件</span></span><br><span class="line"><span class="keyword">const</span> Item = <span class="function">(<span class="params">&#123; title, content &#125;</span>) =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h4&gt;&#123;title&#125;&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&#123;content&#125;&lt;/</span>p&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<p>现在需求要求在第一个展位的标题上增加热文标记：</p>
+<p><img src="/images/说到重构-2.png" alt=""></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Item = <span class="function">(<span class="params">&#123; title, content &#125;, index</span>) =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h4&gt;</span><br><span class="line">      &#123;title&#125;</span><br><span class="line">      &#123;index === <span class="number">0</span> &amp;&amp; &lt;span&gt;hot&lt;/span&gt;&#125;</span><br><span class="line">    &lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&#123;content&#125;&lt;/</span>p&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<p>需求又变了，要求：在第一个展位去掉内容，并且在下方加个按钮；第二个展位的标题右边增加一个超链接以及增加一个副标题：</p>
+<p><img src="/images/说到重构-2.png" alt=""></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 往往会变成这样</span></span><br><span class="line"><span class="keyword">const</span> Item = <span class="function">(<span class="params">&#123; title, content &#125;, index</span>) =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h4&gt;</span><br><span class="line">      &#123;title&#125;</span><br><span class="line">      &#123;index === <span class="number">0</span> &amp;&amp; &lt;span&gt;hot&lt;/span&gt;&#125;</span><br><span class="line">      &#123;index === <span class="number">1</span> &amp;&amp; &lt;a href="xxx"&gt;去看看&lt;/a&gt;&#125;</span><br><span class="line">    &lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">    &#123;index === 1 &amp;&amp; &lt;h5&gt;副标题&lt;/</span>h5&gt;&#125;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &#123;index !== <span class="number">0</span> &amp;&amp; content&#125;</span><br><span class="line">      &#123;index === <span class="number">0</span> &amp;&amp; &lt;button&gt;领福利&lt;button&gt;&#125;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>面目全非，中间混杂着两个状态（第一个、第二个）的判断逻辑。</p>
+<p>实际情况很可能比这个更复杂，在多状态交织逻辑难以通过一套代码表达清楚时，进行合理冗余就是个不错的选择。</p>
+<p>将上面的例子用两个 if 重写如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一个展位</span></span><br><span class="line"><span class="keyword">if</span> (index === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h4&gt;标题一&lt;span&gt;hot&lt;<span class="regexp">/span&gt;&lt;/</span>h4&gt;</span><br><span class="line">      &lt;p&gt;&lt;button&gt;领福利&lt;button&gt;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二个展位</span></span><br><span class="line"><span class="keyword">if</span> (index === <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h4&gt;标题二&lt;a href=<span class="string">"xxx"</span>&gt;去看看&lt;<span class="regexp">/a&gt;&lt;/</span>h4&gt;</span><br><span class="line">      &lt;h5&gt;副标题&lt;<span class="regexp">/h5&gt;</span></span><br><span class="line"><span class="regexp">      &lt;p&gt;内容&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>不要过度设计，简单才是最好的。。。但 react 并不是那么好用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="yui WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="yui Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/妖娆的五一/" rel="next" title="妖娆的五一">
+                <i class="fa fa-chevron-left"></i> 妖娆的五一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/card.webp" alt="yui">
+            
+              <p class="site-author-name" itemprop="name">k-on</p>
+              <p class="site-description motion-element" itemprop="description">目标!武道馆!!</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/miaoyuxinbaby" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#谷歌开发者工具一些方便调试的小技巧"><span class="nav-number">1.</span> <span class="nav-text">谷歌开发者工具一些方便调试的小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个-css-小知识点"><span class="nav-number">2.</span> <span class="nav-text">一个 css 小知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于写不写分号"><span class="nav-number">3.</span> <span class="nav-text">关于写不写分号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抛弃鼠标"><span class="nav-number">4.</span> <span class="nav-text">抛弃鼠标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理冗余其实也是一种重构"><span class="nav-number">5.</span> <span class="nav-text">合理冗余其实也是一种重构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>很遗憾，此生无缘HTT现场了，君生我未生。</p>
+
+<p>© <span itemprop="copyrightYear">2019</span> k-on
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">yui</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
