@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta name="description" content="最近使用 react 的过程中，遇到一些问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未完成文章">
-<meta property="og:url" content="http://yoursite.com/2019/03/24/ 渐进优化/index.html">
+<meta property="og:title" content="hooks hack">
+<meta property="og:url" content="http://yoursite.com/2019/08/01/hooks-hack/index.html">
 <meta property="og:site_name" content="k-on">
-<meta property="og:description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta property="og:description" content="最近使用 react 的过程中，遇到一些问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T05:36:33.003Z">
+<meta property="og:updated_time" content="2019-08-13T05:07:14.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="未完成文章">
-<meta name="twitter:description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta name="twitter:title" content="hooks hack">
+<meta name="twitter:description" content="最近使用 react 的过程中，遇到一些问题">
 
 
 
@@ -182,7 +182,7 @@
 
 
 
-  <title>未完成文章 | k-on</title>
+  <title>hooks hack | k-on</title>
   
 
 
@@ -315,8 +315,8 @@
   
   
   <div class="post-date">
-			<div class="post-month">03月</div>
-			<div class="post-day">24</div>
+			<div class="post-month">08月</div>
+			<div class="post-day">01</div>
 	</div>
   
   <div class="post-badge">
@@ -331,7 +331,7 @@
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ 渐进优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/hooks-hack/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yui">
@@ -348,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">未完成文章</h1>
+          <h1 class="post-title" itemprop="name headline">hooks hack</h1>
         
 
         <div class="post-meta">
@@ -360,8 +360,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-24T22:33:01+08:00">
-                2019-03-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-01T16:00:22+08:00">
+                2019-08-01
               </time>
             
 
@@ -420,12 +420,14 @@
       
 
       
-        <p>将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来</p>
-<p>业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。</p>
-<p>部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置信息接口，确定当前页面有哪些楼层，继而才能决定去请求哪些楼层的数据。</p>
-<p>这种串行的接口请求拖慢了首屏的渲染，这是目前影响首页性能的一个主要问题，也是这次优化的一个重点。</p>
-<p>服务端渲染（如 Vue SSR），首屏直出当然是最理想的方案。</p>
-<p>另一个折中的方案是，在页面上直接引一个后端的模板文件，后端研发同事通过这个模板文件把用户状态、楼层配置等前置信息打到页面上，页面在浏览器中初始化的时候直接读取这些信息，然后再去请求那些依赖这些数据的接口。这样即可避免串行请求的问题，同时还减少了几个请求，有助于提高页面加载和渲染速度。</p>
+        <p>最近使用 react 的过程中，遇到一些问题</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// state -&gt; list1,list2,list3</span></span><br><span class="line"><span class="comment">// 根据hooks的语法，需要这么写，但是，比如v1变化，会重置v2,v3,list2时，这时effect会执行4次。明细是不合理的。</span></span><br><span class="line"><span class="comment">// hack的方式是，所有数据都用ref或者写到函数外，state里就放一些，用来控制强制刷新页面的变量，需要时就修改以达到刷新页面的目的</span></span><br><span class="line"></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> i = list1.filter(<span class="function"><span class="params">_</span> =&gt;</span> _.value === v1)</span><br><span class="line">  同理，i2,i3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;,[v1,v2,v3,list1,list2,list3]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于当某个值变化后去获取数据，如何保障接口数据按顺序返回（请求发出的顺序）,这方面 hooks 还不是很成熟。</p>
+</blockquote>
+<p>类似的，我遇到了很多 hooks 的问题，包括目前的 react devtools 无法查看引用类型 hooks 的值等，有些找到了解决方案，有些，只能采用一些 hack 的方式去实现。</p>
+<p>算是尝过鲜了，但全面拥抱 hooks，还是再缓一缓吧。虽然 hooks 的心智模型确实很顺滑。</p>
 
       
     </div>
@@ -483,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/24/3月例会分享/" rel="next" title="3月例会分享">
-                <i class="fa fa-chevron-left"></i> 3月例会分享
+              <a href="/2019/07/22/7月杂记/" rel="next" title="7月杂记">
+                <i class="fa fa-chevron-left"></i> 7月杂记
               </a>
             
           </div>
@@ -493,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/31/animation - steps()/" rel="prev" title="animation 属性中的 steps 功能符">
-                animation 属性中的 steps 功能符 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/13/为什么我总是感觉我是一条咸鱼?/" rel="prev" title="为什么我总是感觉我是一条咸鱼?">
+                为什么我总是感觉我是一条咸鱼? <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
