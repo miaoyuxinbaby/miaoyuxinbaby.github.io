@@ -115,14 +115,14 @@
 
 <meta name="description" content="我的 10 月猪生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10月杂记">
-<meta property="og:url" content="http://yoursite.com/2019/11/05/10月杂记/index.html">
+<meta property="og:title" content="10-11月杂记">
+<meta property="og:url" content="http://yoursite.com/2019/11/18/10-11月杂记/index.html">
 <meta property="og:site_name" content="k-on">
 <meta property="og:description" content="我的 10 月猪生活">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-05T12:30:00.479Z">
+<meta property="og:updated_time" content="2019-11-18T13:28:44.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10月杂记">
+<meta name="twitter:title" content="10-11月杂记">
 <meta name="twitter:description" content="我的 10 月猪生活">
 
 
@@ -182,7 +182,7 @@
 
 
 
-  <title>10月杂记 | k-on</title>
+  <title>10-11月杂记 | k-on</title>
   
 
 
@@ -316,7 +316,7 @@
   
   <div class="post-date">
 			<div class="post-month">11月</div>
-			<div class="post-day">05</div>
+			<div class="post-day">18</div>
 	</div>
   
   <div class="post-badge">
@@ -331,7 +331,7 @@
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/10月杂记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/10-11月杂记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yui">
@@ -348,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">10月杂记</h1>
+          <h1 class="post-title" itemprop="name headline">10-11月杂记</h1>
         
 
         <div class="post-meta">
@@ -360,8 +360,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T20:08:21+08:00">
-                2019-11-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T21:09:44+08:00">
+                2019-11-18
               </time>
             
 
@@ -439,6 +439,24 @@
 <p>如果调用 app 方法后，需要和 app 进行一段复杂交互，可以约定好，告诉 app 在完成后调用指定 js 方法。比如 <code>jsTaskStack</code>。 每次 js 调用 app 方法的时候，可以重新挂载一个接下来可能会执行的方法，覆盖原 window.jsTaskStack。</p>
 <h3 id="关于主观能动性"><a href="#关于主观能动性" class="headerlink" title="关于主观能动性"></a>关于主观能动性</h3><p>我真是太懒了，只要 github 能找到代码，我绝对不自己写。</p>
 <p>比如最近用到的，lazy-load, backTop 之类的小组件。</p>
+<h3 id="移动端滚动穿透问题"><a href="#移动端滚动穿透问题" class="headerlink" title="移动端滚动穿透问题"></a>移动端滚动穿透问题</h3><p>当模态框出现的时候，一般会有一层 mask。</p>
+<p>然后模态框的内容可以滚动，当滚动到最底部时，就会滚动页面的 body</p>
+<p>假如我们在模态框出现的时候，给 body 一个 overflow hidden。那模态框就也滚动不了。</p>
+<p>在网上看过很多资料，针对不同情况有不同的处理方式。但并没有完美的方法。</p>
+<p>比如 safari 下面，document.body 和 document.documentElement 设置 overflow 会有不同的效果</p>
+<p>安卓的一些浏览器和 webview。ios 的浏览器和 webview, 在兼容的过程中遇到了很多障碍，总有那么一个会出现问题</p>
+<p>一番尝试后，选择了<strong>放弃完美</strong>。 保证所有浏览器的基本功能，即滚动到底部时不会穿透。至于一些细小的问题，选择性的忽略了。</p>
+<p>我知道怎么做可以完全兼容，但我没有去做。</p>
+<p>完美兼容方法 1：</p>
+<p>不使用浏览器的滚动条，全部用 isroll 这类模拟滚动</p>
+<p>完美兼容方法 2：</p>
+<p>document.body 和 document.documentElement 同时设置 overflow hidden，但在有些浏览器下会出现，页面回到顶部的 bug、我手中没有太多的测试机。所以，这只是一个假设的完美方法</p>
+<h3 id="关于-icon-的思考"><a href="#关于-icon-的思考" class="headerlink" title="关于 icon 的思考"></a>关于 icon 的思考</h3><p>跟设计团队合作的过程中，往往会遇到，某个图标切的图宽高是 a<em>b，某个图标是 c</em>d。某个图标切得图不居中等细节问题。</p>
+<p>这对我们还原页面有很大的影响，应该像 iconfont 那样，每个图标不管内容多大，都给一个透明的背景，切出宽高一样的图。这样方便前端实现页面</p>
+<h3 id="antd-mobile-感觉无人维护"><a href="#antd-mobile-感觉无人维护" class="headerlink" title="antd-mobile 感觉无人维护"></a>antd-mobile 感觉无人维护</h3><p>tabs 组件 官方文档写的案例全都没有用，看了实现发现，不能传 key 属性，传了就无法渲染 children 的内容</p>
+<p>好几个月了都没人去 merge pr</p>
+<h3 id="三刷天气之子"><a href="#三刷天气之子" class="headerlink" title="三刷天气之子"></a>三刷天气之子</h3><p>这一次莫名的流了很多泪、最近的生活有些充满魔幻色彩。导致心中的情感，决堤。</p>
+<p>感情方面有了进一步进展，技术方面…没什么长进</p>
 
       
     </div>
@@ -496,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/28/9月瞎几把写/" rel="next" title="9月瞎几把写">
-                <i class="fa fa-chevron-left"></i> 9月瞎几把写
+              <a href="/2019/09/28/9月杂记/" rel="next" title="9月杂记">
+                <i class="fa fa-chevron-left"></i> 9月杂记
               </a>
             
           </div>
@@ -664,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#国庆"><span class="nav-number">1.</span> <span class="nav-text">国庆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding"><span class="nav-number">2.</span> <span class="nav-text">coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最近遇到了几个值得记录的问题。"><span class="nav-number">3.</span> <span class="nav-text">最近遇到了几个值得记录的问题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#antd-mobile-的-PullToRefresh-组件-上拉刷新-问题"><span class="nav-number">3.1.</span> <span class="nav-text">antd-mobile 的 PullToRefresh 组件 上拉刷新 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-ts-中-window-对象上挂在属性的问题。"><span class="nav-number">3.2.</span> <span class="nav-text">关于 ts 中 window 对象上挂在属性的问题。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsBridge-互相调用"><span class="nav-number">3.3.</span> <span class="nav-text">jsBridge 互相调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于主观能动性"><span class="nav-number">3.4.</span> <span class="nav-text">关于主观能动性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#国庆"><span class="nav-number">1.</span> <span class="nav-text">国庆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding"><span class="nav-number">2.</span> <span class="nav-text">coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最近遇到了几个值得记录的问题。"><span class="nav-number">3.</span> <span class="nav-text">最近遇到了几个值得记录的问题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#antd-mobile-的-PullToRefresh-组件-上拉刷新-问题"><span class="nav-number">3.1.</span> <span class="nav-text">antd-mobile 的 PullToRefresh 组件 上拉刷新 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-ts-中-window-对象上挂在属性的问题。"><span class="nav-number">3.2.</span> <span class="nav-text">关于 ts 中 window 对象上挂在属性的问题。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsBridge-互相调用"><span class="nav-number">3.3.</span> <span class="nav-text">jsBridge 互相调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于主观能动性"><span class="nav-number">3.4.</span> <span class="nav-text">关于主观能动性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端滚动穿透问题"><span class="nav-number">3.5.</span> <span class="nav-text">移动端滚动穿透问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-icon-的思考"><span class="nav-number">3.6.</span> <span class="nav-text">关于 icon 的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#antd-mobile-感觉无人维护"><span class="nav-number">3.7.</span> <span class="nav-text">antd-mobile 感觉无人维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三刷天气之子"><span class="nav-number">3.8.</span> <span class="nav-text">三刷天气之子</span></a></li></ol></li></ol></div>
             
 
           </div>
