@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="k-on">
 <meta property="og:description" content="9 月份的技术成长记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-18T13:27:49.929Z">
+<meta property="og:updated_time" content="2019-11-30T04:37:57.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="9月杂记">
 <meta name="twitter:description" content="9 月份的技术成长记录">
@@ -422,19 +422,6 @@
       
         <p>9 月份的技术成长记录</p>
 <a id="more"></a>
-<h2 id="变量访问速度"><a href="#变量访问速度" class="headerlink" title="变量访问速度"></a>变量访问速度</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; a, b &#125; = <span class="keyword">this</span>.state</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> query = &#123;</span><br><span class="line">  aaa: a,</span><br><span class="line">  bbb: b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么要从 state 里解构出变量呢？</p>
-<p>因为数据访问速度有快慢之分，下面列出几个影响数据访问速度的因素：</p>
-<ul>
-<li>字面量与局部变量的访问速度最快，数组元素和对象成员相对较慢</li>
-<li>变量从局部作用域到全局作用域的搜索过程越长速度越慢</li>
-<li>对象嵌套的越深，读取速度就越慢</li>
-<li>对象在原型链中存在的位置越深，找到它的速度就越慢</li>
-</ul>
-<blockquote>
-<p>推荐的做法是缓存对象成员值。将对象成员值缓存到局部变量中会加快访问速度</p>
-</blockquote>
-<p>如果用到 this.state.a 2 次以上，那么解构出 a，就是有意义的</p>
 <h2 id="H5-与-app-交互"><a href="#H5-与-app-交互" class="headerlink" title="H5 与 app 交互"></a>H5 与 app 交互</h2><p>首先，移动端网页运行在手机应用内嵌的浏览器引擎中，这个没有 UI 的内核容器统称 WebView</p>
 <p>H5 与原生应用的交互都是通过原生应用中的 WebView 实现的。通过这个环境，H5 可以调用原生应用注入其中的原生对象的方法，原生应用也可以调用 H5 暴露在这个环境中的 JavaScript 对象的方法，从而实现指令与数据的传输。</p>
 <p>这里有 2 个名词</p>
@@ -448,7 +435,7 @@
 <p>前端 rsa 加密 可以防止抓包，但没法防止中间人攻击</p>
 <h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>登录的安全主要就是中间人攻击，而中间人攻击的实现方法包括就是重放攻击。也就是把截获的数据重发一遍或者重新组装后发送，所以防范的办法就是让重放失效。<br>根据以上分析，唯一的办法就是引入一次性密钥，并且不直接传递任何形式的密码。只要做到这两点，中间人就无处下手进行攻击了。</p>
 <p>你用什么保持登录状态？ cookie 什么的直接抓包一清二楚，根本不需要研究你是怎么处理登陆的， 直接把 cookie 全部拷贝就有了同样的身份</p>
-<p>ssl tls 的存在就是用来解决问题的，<br>严格来说你离开了它们就无法保证安全</p>
+<p>SSL/TLS 的存在就是用来解决问题的，严格来说你离开了它们就无法保证安全</p>
 <p>注册和登录可以通过手机短信动态一次性密码，但是登录成功后就无法抵御中间人了。但是，6 位数验证码，穷举也是分分钟的事情</p>
 <h2 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h2><p>如果前端有对称加密的秘钥，那我会如何伪造别人的身份呢？</p>
 <p>首先，我会自己注册一个账号，然后从某些地方，找到 userId 之类的东西，比如 cookie, 接口返回的参数，代码的断点调试。</p>
@@ -530,8 +517,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/18/10-11月杂记/" rel="prev" title="10-11月杂记">
-                10-11月杂记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/01/hooks-hack/" rel="prev" title="react hooks 问题汇总">
+                react hooks 问题汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +649,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -692,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量访问速度"><span class="nav-number">1.</span> <span class="nav-text">变量访问速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5-与-app-交互"><span class="nav-number">2.</span> <span class="nav-text">H5 与 app 交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单向调用"><span class="nav-number">2.1.</span> <span class="nav-text">单向调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向调用"><span class="nav-number">2.2.</span> <span class="nav-text">双向调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">3.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称加密和非对称加密"><span class="nav-number">4.</span> <span class="nav-text">对称加密和非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间人攻击"><span class="nav-number">5.</span> <span class="nav-text">中间人攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https-ssl"><span class="nav-number">6.</span> <span class="nav-text">https ssl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当网络不好的情况，如何保障请求的返回顺序"><span class="nav-number">8.</span> <span class="nav-text">当网络不好的情况，如何保障请求的返回顺序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#H5-与-app-交互"><span class="nav-number">1.</span> <span class="nav-text">H5 与 app 交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单向调用"><span class="nav-number">1.1.</span> <span class="nav-text">单向调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向调用"><span class="nav-number">1.2.</span> <span class="nav-text">双向调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称加密和非对称加密"><span class="nav-number">3.</span> <span class="nav-text">对称加密和非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间人攻击"><span class="nav-number">4.</span> <span class="nav-text">中间人攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https-ssl"><span class="nav-number">5.</span> <span class="nav-text">https ssl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当网络不好的情况，如何保障请求的返回顺序"><span class="nav-number">7.</span> <span class="nav-text">当网络不好的情况，如何保障请求的返回顺序</span></a></li></ol></div>
             
 
           </div>

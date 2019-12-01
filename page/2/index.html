@@ -322,8 +322,8 @@
   <div class="post-badge">
     
       <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-        <a href="/categories/少女日记/" itemprop="url" rel="index">
-          <span itemprop="name">少女日记</span>
+        <a href="/categories/读书笔记/" itemprop="url" rel="index">
+          <span itemprop="name">读书笔记</span>
         </a>
       </span>
     
@@ -350,7 +350,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/11/月亮与六便士/" itemprop="url">月亮与六便士</a></h1>
+                <a class="post-title-link" href="/2019/06/11/月亮与六便士/" itemprop="url">月亮与六便士读后感</a></h1>
         
 
         <div class="post-meta">
@@ -385,8 +385,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/少女日记/" itemprop="url" rel="index">
-                    <span itemprop="name">少女日记</span>
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
                   </a>
                 </span>
 
@@ -1449,7 +1449,7 @@
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ 渐进优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/我们可以做哪些优化呢？/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yui">
@@ -1468,7 +1468,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/24/ 渐进优化/" itemprop="url">未完成文章</a></h1>
+                <a class="post-title-link" href="/2019/03/24/我们可以做哪些优化呢？/" itemprop="url">我们可以做哪些优化呢？</a></h1>
         
 
         <div class="post-meta">
@@ -1542,15 +1542,35 @@
       
         
           
-            <p>将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来</p>
-<p>业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。</p>
-<p>部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置信息接口，确定当前页面有哪些楼层，继而才能决定去请求哪些楼层的数据。</p>
-<p>这种串行的接口请求拖慢了首屏的渲染，这是目前影响首页性能的一个主要问题，也是这次优化的一个重点。</p>
-<p>服务端渲染（如 Vue SSR），首屏直出当然是最理想的方案。</p>
-<p>另一个折中的方案是，在页面上直接引一个后端的模板文件，后端研发同事通过这个模板文件把用户状态、楼层配置等前置信息打到页面上，页面在浏览器中初始化的时候直接读取这些信息，然后再去请求那些依赖这些数据的接口。这样即可避免串行请求的问题，同时还减少了几个请求，有助于提高页面加载和渲染速度。</p>
+            <h2 id="静态资源优化"><a href="#静态资源优化" class="headerlink" title="静态资源优化"></a>静态资源优化</h2><p>将静态资源按版本缓存到 ServiceWorker 或者 locaStorage</p>
+<p>不常更新的第三方依赖包，用 dllPlugin 抽成多个模块，每个保持 200kb 以下，放到 CDN。</p>
+<h2 id="接口请求优化"><a href="#接口请求优化" class="headerlink" title="接口请求优化"></a>接口请求优化</h2><p>串行的接口、大量并行的接口请求都会拖慢首屏的渲染。</p>
+<p>解决方法：服务端渲染首页 或者 构建 BFF 层，为接口消费方提供服务。</p>
+<h2 id="react-性能优化"><a href="#react-性能优化" class="headerlink" title="react 性能优化"></a>react 性能优化</h2><ul>
+<li>当父组件 state 变化，导致子组件频繁更新（子组件无需更新的情况）</li>
+</ul>
+<p>用 <code>shouldComponentUpdate</code> 生命周期来控制子组件更新，return false 则无需更新</p>
+<p>或者直接用 <code>PureComponet</code>。 通过对 props 和 state 的浅比较结果来实现。大多数情况下可以直接使用这个，复杂数据结构时手动控制是否 re-render</p>
+<p>PureComponet 一般给无状态组件用，有状态组件自行 shouldComponentUpdate</p>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><ul>
+<li>变量访问速度优化</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; a, b &#125; = <span class="keyword">this</span>.state</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> query = &#123;</span><br><span class="line">  aaa: a,</span><br><span class="line">  bbb: b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么要从 state 里解构出变量呢？</p>
+<p>因为数据访问速度有快慢之分，下面列出几个影响数据访问速度的因素：</p>
+<ul>
+<li>字面量与局部变量的访问速度最快，数组元素和对象成员相对较慢</li>
+<li>变量从局部作用域到全局作用域的搜索过程越长速度越慢</li>
+<li>对象嵌套的越深，读取速度就越慢</li>
+<li>对象在原型链中存在的位置越深，找到它的速度就越慢</li>
+</ul>
+<blockquote>
+<p>推荐的做法是缓存对象成员值。将对象成员值缓存到局部变量中会加快访问速度</p>
+</blockquote>
+<p>如果用到 this.state.a 2 次以上，那么解构出 a，就是有意义的，当然了，对象过于庞大可能就不适合这样做了。</p>
 
             <div class="post-button text-center">
-              <a class="btn" href="/2019/03/24/ 渐进优化/#more" rel="contents">
+              <a class="btn" href="/2019/03/24/我们可以做哪些优化呢？/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -2013,7 +2033,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta name="description" content="最近使用 react 的过程中，遇到一些问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未完成文章">
-<meta property="og:url" content="http://yoursite.com/2019/03/24/ 渐进优化/index.html">
+<meta property="og:title" content="react hooks 问题汇总">
+<meta property="og:url" content="http://yoursite.com/2019/10/01/hooks-hack/index.html">
 <meta property="og:site_name" content="k-on">
-<meta property="og:description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta property="og:description" content="最近使用 react 的过程中，遇到一些问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T05:36:33.003Z">
+<meta property="og:updated_time" content="2019-12-01T10:23:12.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="未完成文章">
-<meta name="twitter:description" content="将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来 业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。 部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置">
+<meta name="twitter:title" content="react hooks 问题汇总">
+<meta name="twitter:description" content="最近使用 react 的过程中，遇到一些问题">
 
 
 
@@ -182,7 +182,7 @@
 
 
 
-  <title>未完成文章 | k-on</title>
+  <title>react hooks 问题汇总 | k-on</title>
   
 
 
@@ -315,8 +315,8 @@
   
   
   <div class="post-date">
-			<div class="post-month">03月</div>
-			<div class="post-day">24</div>
+			<div class="post-month">10月</div>
+			<div class="post-day">01</div>
 	</div>
   
   <div class="post-badge">
@@ -331,7 +331,7 @@
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ 渐进优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/hooks-hack/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yui">
@@ -348,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">未完成文章</h1>
+          <h1 class="post-title" itemprop="name headline">react hooks 问题汇总</h1>
         
 
         <div class="post-meta">
@@ -360,8 +360,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T22:33:01+08:00">
-                2019-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-01T16:00:22+08:00">
+                2019-10-01
               </time>
             
 
@@ -420,12 +420,20 @@
       
 
       
-        <p>将静态资源按版本缓存到 ServiceWorker 或者 locaStorage, 不常更新的第三方依赖，用 dllPlugin 抽出来</p>
-<p>业务逻辑本身比较复杂，涉及很多种用户状态，页面逻辑也复杂。不同用户看到的界面不完全相同，这受用户状态和后台配置等多种因素影响。</p>
-<p>部分接口存在相互依赖的关系，比如有接口要求传用户状态，因此需要先行通过用户信息接口拿到用户状态。再比如商品数据接口，需要先请求楼层配置信息接口，确定当前页面有哪些楼层，继而才能决定去请求哪些楼层的数据。</p>
-<p>这种串行的接口请求拖慢了首屏的渲染，这是目前影响首页性能的一个主要问题，也是这次优化的一个重点。</p>
-<p>服务端渲染（如 Vue SSR），首屏直出当然是最理想的方案。</p>
-<p>另一个折中的方案是，在页面上直接引一个后端的模板文件，后端研发同事通过这个模板文件把用户状态、楼层配置等前置信息打到页面上，页面在浏览器中初始化的时候直接读取这些信息，然后再去请求那些依赖这些数据的接口。这样即可避免串行请求的问题，同时还减少了几个请求，有助于提高页面加载和渲染速度。</p>
+        <p>最近使用 react 的过程中，遇到一些问题</p>
+<a id="more"></a>
+<p>我遇到了很多 hooks 的问题，包括目前的 react devtools 无法查看引用类型 hooks 的值等，有些找到了解决方案，有些，只能采用一些 hack 的方式去实现。</p>
+<blockquote>
+<p>即使观测值没有发生，我也想去执行 effect 怎么办？</p>
+</blockquote>
+<p>hack 方式时，额外观测一个递增的数字，用来做无改动时的执行导火索。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 要用id1,id2去 list1,2中取数据 name1,name2</span></span><br><span class="line">  <span class="comment">// 问题1：如何控制 list1 和 list2变化的时候，不执行effect</span></span><br><span class="line">  <span class="comment">// 问题2：如何控制，id1和id2都更新后再执行effect</span></span><br><span class="line">&#125;, [id1, id2, list1, list2])</span><br></pre></td></tr></table></figure>
+<p>并且，上述问题的可以用 useReducer 来解决.React 会保证 dispatch 在组件的声明周期内保持不变。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; list1, list2 &#125; = state</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (action.type === <span class="string">'getname1'</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">name1</span>: list1.filter(<span class="function"><span class="params">_</span> =&gt;</span> _.id === action.value), <span class="attr">name2</span>: <span class="string">''</span> &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialState)</span><br><span class="line"><span class="keyword">const</span> &#123; name1, name2 &#125; = state</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 获取name1</span></span><br><span class="line">  dispatch(&#123; <span class="attr">type</span>: <span class="string">'getname1'</span>, <span class="attr">value</span>: id1 &#125;) <span class="comment">// Instead of setCount(c =&gt; c + step);</span></span><br><span class="line">&#125;, [id1, id2, dispatch])</span><br></pre></td></tr></table></figure>
+<p>相比于直接在 effect 里面读取状态，它 dispatch 了一个 action 来描述发生了什么。这使得我们的 effect 和 list1,list2 状态解耦。我们的 effect 不再关心怎么更新状态，它只负责告诉我们发生了什么。更新的逻辑全都交由 reducer 去统一处理.</p>
+<blockquote>
+<p>关于连续多次改动 state，要取最新的值，可以通过 useRef 解决，它像一个盒子，永远装着最新的数据</p>
+</blockquote>
 
       
     </div>
@@ -483,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/11/web开发中的小图标处理思考/" rel="next" title="web 小图标处理思考">
-                <i class="fa fa-chevron-left"></i> web 小图标处理思考
+              <a href="/2019/09/28/9月杂记/" rel="next" title="9月杂记">
+                <i class="fa fa-chevron-left"></i> 9月杂记
               </a>
             
           </div>
@@ -493,8 +501,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/24/3月例会分享/" rel="prev" title="3月例会分享">
-                3月例会分享 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/30/10-11月杂记/" rel="prev" title="10-11月杂记">
+                10-11月杂记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -616,7 +624,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
