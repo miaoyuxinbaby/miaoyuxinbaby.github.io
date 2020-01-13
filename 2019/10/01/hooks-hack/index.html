@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="k-on">
 <meta property="og:description" content="最近使用 react 的过程中，遇到一些问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T10:40:11.012Z">
+<meta property="og:updated_time" content="2020-01-13T14:12:22.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react hooks 问题汇总">
 <meta name="twitter:description" content="最近使用 react 的过程中，遇到一些问题">
@@ -428,11 +428,14 @@
 </blockquote>
 <p>hack 方式时，额外观测一个递增的数字，用来做无改动时的执行导火索。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 要用id1,id2去 list1,2中取数据 name1,name2</span></span><br><span class="line">  <span class="comment">// 问题1：如何控制 list1 和 list2变化的时候，不执行effect</span></span><br><span class="line">  <span class="comment">// 问题2：如何控制，id1和id2都更新后再执行effect</span></span><br><span class="line">&#125;, [id1, id2, list1, list2])</span><br></pre></td></tr></table></figure>
-<p>并且，上述问题的可以用 useReducer 来解决.React 会保证 dispatch 在组件的声明周期内保持不变。</p>
+<p>并且，上述问题的可以用 useReducer 来解决.React 会保证 dispatch 在组件的声明周期内保持不变。也可以用 useRef 去解决,这类似于 class 组件的 this</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; list1, list2 &#125; = state</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (action.type === <span class="string">'getname1'</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">name1</span>: list1.filter(<span class="function"><span class="params">_</span> =&gt;</span> _.id === action.value), <span class="attr">name2</span>: <span class="string">''</span> &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialState)</span><br><span class="line"><span class="keyword">const</span> &#123; name1, name2 &#125; = state</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 获取name1</span></span><br><span class="line">  dispatch(&#123; <span class="attr">type</span>: <span class="string">'getname1'</span>, <span class="attr">value</span>: id1 &#125;) <span class="comment">// Instead of setCount(c =&gt; c + step);</span></span><br><span class="line">&#125;, [id1, id2, dispatch])</span><br></pre></td></tr></table></figure>
 <p>相比于直接在 effect 里面读取状态，它 dispatch 了一个 action 来描述发生了什么。这使得我们的 effect 和 list1,list2 状态解耦。我们的 effect 不再关心怎么更新状态，它只负责告诉我们发生了什么。更新的逻辑全都交由 reducer 去统一处理.</p>
 <blockquote>
 <p>关于连续多次改动 state，要取最新的值，可以通过 useRef 解决，它像一个盒子，永远装着最新的数据</p>
+</blockquote>
+<blockquote>
+<p>useRef 还可以存储，prevProps。在 effect 中做更新赋值</p>
 </blockquote>
 <blockquote>
 <p>useReducer 是 Hooks 的作弊模式!!</p>
